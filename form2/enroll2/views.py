@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from enroll2.forms import StudentRegistration,field,field2
+from enroll2.forms import StudentRegistration,field,field2,field3,field4
 # Create your views here.
 
 def showformdata(request):
@@ -39,3 +39,29 @@ def fieldshow2(request):
         fm2=field2()
         print("hello")
     return render(request,'enroll2/field2.html',{"form3":fm2})
+
+def fieldshow3(request):
+    if request.method=="POST":
+        fm3=field3()
+        if fm3.is_valid():
+             print("form validated")
+             print("Name",fm3.cleaned_data['name'])
+             print("email",fm3.cleaned_data['email'])
+             print("password",fm3.cleaned_data['password'])               
+    else:
+        fm3=field3()
+    return render(request,'enroll2/field3.html',{"form4":fm3})
+
+def fieldshow4(request):
+    if request.method=="POST":
+        fm4=field4()
+        if fm4.is_valid():
+             print("form validated")
+             print("Name",fm4.cleaned_data['name'])
+             print("email",fm4.cleaned_data['email'])
+             print("password",fm4.cleaned_data['password'])  
+             print("Rpassword",fm4.cleaned_data['Rpassword'])               
+             
+    else:
+        fm4=field4()
+    return render(request,'enroll2/field4.html',{"form5":fm4})
